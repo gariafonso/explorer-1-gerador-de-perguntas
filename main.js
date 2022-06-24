@@ -1,41 +1,57 @@
 const elementoResposta = document.querySelector('#resposta')
+
+const inputPergunta = document.querySelector("#inputPergunta")
+
 const resposta = [
-  'Normalmente, quantos litros de sangue uma pessoa tem? Em média, quantos são retirados numa doação de sangue?',
+  'Sim, estou.',
 
-  'De quem é a famosa frase “Penso, logo existo”?',
+  'Não',
 
-  'Quais o menor e o maior país do mundo?',
+  'Sim, eu tenho.',
 
-  'De onde é a invenção do chuveiro elétrico?',
+  'Não, não tenho.',
 
-  'Quais o menor e o maior país do mundo?',
+  'Sim, estavas.',
 
-  'Qual o nome do presidente do Brasil que ficou conhecido como Jango?',
+  'Eras .',
 
-  'Qual o grupo em que todas as palavras foram escritas corretamente?',
+  'Acho.',
 
-  'Qual o livro mais vendido no mundo a seguir à Bíblia?',
+  'Não sei.',
 
-  'Quantas casas decimais tem o número pi?',
+  'Gosto disso.',
 
-  'Atualmente, quantos elementos químicos a tabela periódica possui?',
+  'Faz outra pergunta.',
 
-  'Quais os países que têm a maior e a menor expectativa de vida do mundo?',
+  'não sei.',
 
-  'O que a palavra legend significa em português?',
+  'Não tenho certeza.',
 
-  'Qual o número mínimo de jogadores numa partida de futebol?',
+  'Provavelmente.',
 
-  'Quais os principais autores do Barroco no Brasil?',
+  'Se você se dedicar.',
 
-  'Quais as duas datas que são comemoradas em novembro?'
+  'concordo contigo.'
 ]
 
 //clicar em faser pergunta
 function fazerPergunta() {
+
+  if (inputPergunta.value == ""){
+    alert("digite uma pergunta")
+    return
+  }
+
+  const pergunta = "<div>" + inputPergunta.value + "</div>"
+
   //gerar numero aleatorio
   const totalRespostas = resposta.length
   const numeroAliatorio = Math.floor(Math.random() * totalRespostas)
 
-  elementoResposta.innerHTML = resposta[numeroAliatorio]
+  elementoResposta.innerHTML = pergunta + resposta[numeroAliatorio]
+
+  // Sumir a resposta depois de 3 segundos
+  setTimeout(function(){
+    elementoResposta.style.opacity = 0;
+  },3000)
 }
