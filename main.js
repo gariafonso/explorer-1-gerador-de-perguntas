@@ -1,57 +1,24 @@
-const elementoResposta = document.querySelector('#resposta')
+const inputPergunta = document.querySelector('#inputPergunta')
+const resposta = document.querySelector('#resposta')
 
-const inputPergunta = document.querySelector("#inputPergunta")
-
-const resposta = [
-  'Sim, estou.',
-
-  'Não',
-
-  'Sim, eu tenho.',
-
-  'Não, não tenho.',
-
-  'Sim, estavas.',
-
-  'Eras .',
-
-  'Acho.',
-
-  'Não sei.',
-
-  'Gosto disso.',
-
-  'Faz outra pergunta.',
-
-  'não sei.',
-
-  'Não tenho certeza.',
-
-  'Provavelmente.',
-
-  'Se você se dedicar.',
-
-  'concordo contigo.'
+//respostas
+const respostas = [
+  'Não sei',
+  'Provavelmente',
+  'Depende da sua dedicação',
+  'Não posso responder',
+  'Faça outra pergunta',
+  'Talvez',
+  'Sim'
 ]
 
-//clicar em faser pergunta
-function fazerPergunta() {
+//Quando clicar no botão
+function gerarPergunta() {
+  const totalRespostas = respostas.length
+  //Gerar numero aleatorio
+  const numeroAleatorio = Math.floor(Math.random() * totalRespostas)
 
-  if (inputPergunta.value == ""){
-    alert("digite uma pergunta")
-    return
-  }
+  const div = '<div>' + inputPergunta.value + '</div>'
 
-  const pergunta = "<div>" + inputPergunta.value + "</div>"
-
-  //gerar numero aleatorio
-  const totalRespostas = resposta.length
-  const numeroAliatorio = Math.floor(Math.random() * totalRespostas)
-
-  elementoResposta.innerHTML = pergunta + resposta[numeroAliatorio]
-
-  // Sumir a resposta depois de 3 segundos
-  setTimeout(function(){
-    elementoResposta.style.opacity = 0;
-  },3000)
+  resposta.innerHTML = div + respostas[numeroAleatorio]
 }
